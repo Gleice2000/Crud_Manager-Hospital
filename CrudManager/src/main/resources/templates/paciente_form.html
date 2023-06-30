@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<div th:replace="cabecalho :: head"></div>
+
+	<title>Crud Manager - Paciente</title>
+</head>
+
+<body>
+	<div class="container my-2">
+		<h2>Paciente</h2>
+		<form action="#" th:action="@{/pacientes/new}" th:object="${paciente}" method="POST">
+		
+			<input type="hidden" th:field="*{id}" id="id">
+			
+			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4"> 
+			
+			<input type="text" th:field="*{sus}" placeholder="Sus" class="form-control mb-4 col-4">
+			
+			<input type="text" th:field="*{telefone}" placeholder="Numero do Celular" class="form-control mb-4 col-4">
+			
+			<input type="text" th:field="*{cpf}" placeholder="Cpf" class="form-control mb-4 col-4">
+					
+			<button type="submit" class="btn col-2" style="background-color: #89e08f; color:#FFFFFF;">Salvar</button>
+		</form>
+		<hr>
+		<a th:field="@{/pacientes}" href="/pacientes">Pacientes</a>
+	</div>
+</body>
+</html>

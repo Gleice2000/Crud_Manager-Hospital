@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<div th:replace="cabecalho :: head"></div>
+
+	<title>Crud Manager - Consulta</title>
+</head>
+
+<body>
+	<div class="container my-2">
+		<h2>Consulta</h2>
+		<form action="#" th:action="@{/consultas/new}" th:object="${consulta}" method="POST">
+		
+			<input type="hidden" th:field="*{id}" id="id">
+			
+			<input type="text" th:field="*{medico}" placeholder="Medico" class="form-control mb-4 col-4"> 
+			
+			<input type="text" th:field="*{motivo}" placeholder="Motivo da consulta" class="form-control mb-4 col-4"> 
+			
+			<input type="text" th:field="*{data}" placeholder="Data" class="form-control mb-4 col-4"> 
+			
+			<input type="text" th:field="*{sala}" placeholder="Sala do atendimento" class="form-control mb-4 col-4">
+			
+			<div class="form-group">
+			    <label for="paciente">Paciente da Consulta</label>
+    <select class="form-control" id="paciente" th:field="*{paciente.id}">
+        <option value="">Selecione um paciente para o atendimento</option>
+        <option th:each="paciente : ${pacientes}" th:value="${paciente.id}" th:text="${paciente.getNome()}"></option>
+    </select>
+			</div>
+			
+			<button type="submit" class="btn col-2" style="background-color: #359830; color:#89e08f;">Salvar</button>
+		</form>
+		<hr>
+		<a th:field="@{/consultas}" href ="/consultas">Consultas</a>
+	</div>
+</body>
+</html>
